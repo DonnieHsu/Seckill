@@ -1,0 +1,103 @@
+<dataSource name="MySQL - seckill@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="seckill">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="echo" />
+    <schema id="3" name="imooc" />
+    <schema id="4" name="information_schema" />
+    <schema id="5" name="JavaWeb" />
+    <schema id="6" name="mysql" />
+    <schema id="7" name="performance_schema" />
+    <schema id="8" name="Spring" />
+    <schema id="9" name="sys" />
+    <schema id="10" name="test" />
+    <table id="11" parent="1" name="seckill">
+      <comment>库存秒杀表</comment>
+    </table>
+    <table id="12" parent="1" name="success_killed">
+      <comment>库存秒杀表</comment>
+    </table>
+    <column id="13" parent="11" name="seckill_id">
+      <comment>商品库存id</comment>
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="14" parent="11" name="name">
+      <comment>商品名称</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(120)|0</data-type>
+    </column>
+    <column id="15" parent="11" name="number">
+      <comment>库存数量</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="16" parent="11" name="start_time">
+      <comment>秒杀开始时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="17" parent="11" name="end_time">
+      <comment>秒杀结束时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="18" parent="11" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <index id="19" parent="11" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns />
+    </index>
+    <index id="20" parent="11" name="idx_end_time">
+      <columns>end_time</columns>
+      <desc-columns />
+    </index>
+    <index id="21" parent="11" name="idx_start_time">
+      <columns>start_time</columns>
+      <desc-columns />
+    </index>
+    <key id="22" parent="11" name="PRIMARY">
+      <columns>seckill_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="23" parent="12" name="seckill_id">
+      <comment>秒杀商品id</comment>
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="24" parent="12" name="user_phone">
+      <comment>用户手机号</comment>
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="25" parent="12" name="state">
+      <comment>状态：-1 无效：0 成功：1 已付款</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4)|0</data-type>
+      <default-expression>'-1'</default-expression>
+    </column>
+    <column id="26" parent="12" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <index id="27" parent="12" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns />
+    </index>
+    <key id="28" parent="12" name="PRIMARY">
+      <columns>seckill_id
+user_phone</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
